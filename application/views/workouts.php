@@ -18,7 +18,7 @@ white-space: normal;
 
 	<div data-role="content">
 		<p>This is your workout feed.</p>
-		<ul data-role="listview" data-inset="true" data-theme="c" data-dividertheme="b">
+		<ul id="workout_list" data-role="listview" data-inset="true" data-theme="c" data-dividertheme="b">
 		<?php foreach($workouts as $row): ?>
 			<li role="option" tabindex="-1" class="ui-li ui-li-static ui-btn-up-d">
 				<h3 style="">
@@ -32,36 +32,9 @@ white-space: normal;
 		</ul>
 	</div>
 	
-	
+
 	
 
 </div>
 </body>
 </html>
-
-<!-- 
-<ul data-inset="true" data-theme="d" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all ui-shadow" role="listbox">
-				<li role="option" tabindex="0" class="ui-li ui-li-static ui-btn-up-d ui-corner-top">Acura</li>
-				<li role="option" tabindex="-1" class="ui-li ui-li-static ui-btn-up-d">Audi</li>
-				<li role="option" tabindex="-1" class="ui-li ui-li-static ui-btn-up-d">BMW</li>
-				<li role="option" tabindex="-1" class="ui-li ui-li-static ui-btn-up-d">Cadillac</li>
-				<li role="option" tabindex="-1" class="ui-li ui-li-static ui-btn-up-d">Chrysler</li>
-				<li role="option" tabindex="-1" class="ui-li ui-li-static ui-btn-up-d">Dodge</li>
-				<li role="option" tabindex="-1" class="ui-li ui-li-static ui-btn-up-d">Ferrari</li>
-				<li role="option" tabindex="0" class="ui-li ui-li-static ui-btn-up-d">Ford</li>
-				<li role="option" tabindex="-1" class="ui-li ui-li-static ui-btn-up-d">GMC</li>
-				<li role="option" tabindex="-1" class="ui-li ui-li-static ui-btn-up-d">Honda</li>
-				<li role="option" tabindex="-1" class="ui-li ui-li-static ui-btn-up-d">Hyundai</li>
-				<li role="option" tabindex="-1" class="ui-li ui-li-static ui-btn-up-d">Infiniti</li>
-				<li role="option" tabindex="-1" class="ui-li ui-li-static ui-btn-up-d">Jeep</li>
-				<li role="option" tabindex="-1" class="ui-li ui-li-static ui-btn-up-d">Kia</li>
-				<li role="option" tabindex="-1" class="ui-li ui-li-static ui-btn-up-d">Lexus</li>
-				<li role="option" tabindex="-1" class="ui-li ui-li-static ui-btn-up-d">Mini</li>
-				<li role="option" tabindex="-1" class="ui-li ui-li-static ui-btn-up-d">Nissan</li>
-				<li role="option" tabindex="-1" class="ui-li ui-li-static ui-btn-up-d">Porsche</li>
-				<li role="option" tabindex="-1" class="ui-li ui-li-static ui-btn-up-d">Subaru</li>
-				<li role="option" tabindex="-1" class="ui-li ui-li-static ui-btn-up-d">Toyota</li>
-				<li role="option" tabindex="-1" class="ui-li ui-li-static ui-btn-up-d">Volkswagon</li>
-				<li role="option" tabindex="-1" class="ui-li ui-li-static ui-btn-up-d ui-corner-bottom">Volvo</li>
-			</ul>
- -->

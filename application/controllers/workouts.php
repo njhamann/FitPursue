@@ -9,43 +9,43 @@ class Workouts extends CI_Controller {
 
 	function index()
 	{
-		$this->load->model('Workout', 'workout');
-		$user->id = $this->uri->segment(3, 0);
-		$result['workouts'] = $this->workout->get_user_workouts($user);
 		
-		for($i=0; $i<count($result['workouts']); $i++)
-		{
-			$post_time = $result['workouts'][$i]->workout_date;
-			
-			$post_date = human_to_unix($post_time);
-			$post_date = timespan($post_date);
-			
-			$post_time_array = explode(", ", $post_date);
-			$post_time_count = count($post_time_array);
-			switch ($post_time_count) 
-			{
-			    case 0:
-			        break;
-			    case 1:
-			        $post_date = strtolower($post_time_array[0])." ago";
-			        break;
-			    case 2:
-			    	$post_date = strtolower($post_time_array[1])." ago";
-			        break;
-			    default:
-					$post_date = date("j \of M y", $post_time);
-			}
-			$result['workouts'][$i]->workout_date = $post_date;
-		}
+		$this->load->model('User', 'user');
+		$user->id = $this->session->userdata('id');
+		$workout_result = $this->user->get_user($user);
+		$result['user'] = $workout_result[0];       
 		
-		$this->load->view('workouts', $result);
+
+		$this->load->view('add_workout', $result);
 	}
 
+	function submit()
+	{
+	
+		$this->load->database();
+        
+		$this->load->model('Workout', 'workout');
+		
+		
+		$this->load->model('User', 'user');
+		$user->id = $this->session->userdata('id');
+		$workout_result = $this->user->get_user($user);
+		$result['user'] = $workout_result[0]; 
+		
+		
+		$workout->user_id = $this->session->userdata('id');
+		$workout->type = $this->input->post('type');
+		$workout->amount = $this->input->post('amount');
+		$workout->amount_unit = $this->input->post('amount_unit');
+		$workout->amount_2 = $this->input->post('amount_2');
+		$workout->amount_2_unit = $this->input->post('amount_2_unit');
+		$workout->notes = $this->input->post('notes');
+		$workout->workout_date = date( 'Y-m-d H:i:s');
+		$this->workout->insert_workout($workout);
+
+		$this->load->view('add_workout', $result);	
+		
+	}
 	
 }
-
-
-
-
-
 ?>

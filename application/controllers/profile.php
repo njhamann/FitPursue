@@ -1,15 +1,14 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Users extends CI_Controller {
+class Profile extends CI_Controller {
 
 	function __construct()
 	{
 		parent::__construct();
 	}
-
 	function index()
 	{
-		echo "made it here";
+		echo "index page";
 	}
 
 	function user()
@@ -37,7 +36,6 @@ class Users extends CI_Controller {
 				$this->load->view('home');
 			}
 		}
-
 	}
 	
 	function createUserSession($results)
@@ -89,7 +87,10 @@ class Users extends CI_Controller {
 		}
 		return $result;
 	}
-
 }
+
+
+
+
 
 ?>

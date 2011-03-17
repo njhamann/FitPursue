@@ -9,8 +9,9 @@ class Friends extends CI_Controller {
 
 	function index()
 	{
+		$this->check_session();
 		$this->load->model('Workout', 'workout');
-		$user->id = $this->uri->segment(3, 0);
+		$user->id = $this->session->userdata('id');
 		$result['workouts'] = $this->workout->get_friend_workouts($user);
 
 
@@ -33,6 +34,9 @@ class Friends extends CI_Controller {
 			    case 2:
 			    	$post_date = strtolower($post_time_array[1])." ago";
 			        break;
+			    case 3:
+			    	$post_date = strtolower($post_time_array[2])." ago";
+			        break;
 			    default:
 					$post_date = date("j \of M y", $post_time);
 			}
@@ -40,7 +44,17 @@ class Friends extends CI_Controller {
 		}
 		$this->load->view('friends', $result);
 	}
-
+	function check_session()
+	{
+		$loggedIn = $this->session->userdata('loggedIn');
+		$userId = $this->session->userdata('id');
+		
+		if(!$loggedIn || $userId == ''){
+			$session_items = array('loggedIn' => '', 'id' => '', 'username' => '');
+			$this->session->unset_userdata($session_items);
+			redirect('/home');
+		}
+	}
 	
 }
 

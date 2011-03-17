@@ -17,7 +17,16 @@ class User extends CI_Model {
 		$items = $res->result();
 	    return $items;
     }
-    
+    function get_user_by_username($user)
+    {
+   		$sql = "SELECT *
+ 				FROM user
+ 				WHERE username='$user->username'";
+ 				
+		$res = $this->db->query($sql);  
+		$items = $res->result();
+	    return $items;
+    }
     
     
 }

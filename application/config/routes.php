@@ -38,18 +38,22 @@
 |
 */
 
-$route['default_controller'] = "home";
+$route['default_controller'] = "friends";
 $route['404_override'] = "";
 
+$route['logout'] = "logout";
+$route['logout/(:any)'] = "logout/$1";
 $route['home'] = "home";
 $route['home/(:any)'] = "home/$1";
+$route['profile'] = "profile";
+$route['profile/(:any)'] = "profile/$1";
 $route['workouts'] = "workouts";
 $route['workouts/(:any)'] = "workouts/$1";
 $route['friends'] = "friends";
 $route['friends/(:any)'] = "friends/$1";
 $route['(:any)/(:any)'] = "friends/index";
 
-$route['(:any)'] = "users/user/$1";
+$route['(:any)'] = "profile/user/$1";
 
 
 
