@@ -64,7 +64,6 @@ class Profile extends CI_Controller {
 		for($i=0; $i<count($result['workouts']); $i++)
 		{
 			$post_time = $result['workouts'][$i]->workout_date;
-			
 			$post_date = human_to_unix($post_time);
 			$post_date = timespan($post_date);
 			
@@ -81,8 +80,10 @@ class Profile extends CI_Controller {
 			    	$post_date = strtolower($post_time_array[0])." ago";
 			        break;
 			    default:
-					$post_date = date("j \of M y", $post_time);
+
+					$post_date = date("j \of M y", strtotime($post_time));
 			}
+			
 			$result['workouts'][$i]->workout_date = $post_date;
 		}
 		return $result;
