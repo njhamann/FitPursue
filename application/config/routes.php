@@ -41,6 +41,8 @@
 $route['default_controller'] = "friends";
 $route['404_override'] = "";
 
+$route['settings'] = "settings";
+$route['settings/(:any)'] = "settings/$1";
 $route['auth'] = "auth";
 $route['auth/(:any)'] = "auth/$1";
 $route['welcome'] = "welcome";
