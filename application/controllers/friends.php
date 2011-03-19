@@ -5,13 +5,14 @@ class Friends extends CI_Controller {
 	function __construct()
 	{
 		parent::__construct();
+		$this->load->library('tank_auth');
 	}
 
 	function index()
 	{
 		$this->check_session();
 		$this->load->model('Workout', 'workout');
-		$user->id = $this->session->userdata('id');
+		$user->id = $this->tank_auth->get_user_id();
 		$result['workouts'] = $this->workout->get_friend_workouts($user);
 
 
@@ -46,6 +47,11 @@ class Friends extends CI_Controller {
 	}
 	function check_session()
 	{
+	
+		if (!$this->tank_auth->is_logged_in()) {
+			redirect('/home');
+		}
+	/*
 		$loggedIn = $this->session->userdata('loggedIn');
 		$userId = $this->session->userdata('id');
 		
@@ -54,6 +60,7 @@ class Friends extends CI_Controller {
 			$this->session->unset_userdata($session_items);
 			redirect('/home');
 		}
+		*/
 	}
 	
 }

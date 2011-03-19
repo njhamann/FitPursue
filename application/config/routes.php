@@ -41,6 +41,10 @@
 $route['default_controller'] = "friends";
 $route['404_override'] = "";
 
+$route['auth'] = "auth";
+$route['auth/(:any)'] = "auth/$1";
+$route['welcome'] = "welcome";
+$route['welcome/(:any)'] = "welcome/$1";
 $route['logout'] = "logout";
 $route['logout/(:any)'] = "logout/$1";
 $route['home'] = "home";
@@ -51,6 +55,8 @@ $route['workouts'] = "workouts";
 $route['workouts/(:any)'] = "workouts/$1";
 $route['friends'] = "friends";
 $route['friends/(:any)'] = "friends/$1";
+
+
 $route['(:any)/(:any)'] = "friends/index";
 
 $route['(:any)'] = "profile/user/$1";
