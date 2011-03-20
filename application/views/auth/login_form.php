@@ -54,6 +54,7 @@ white-space: normal;
 <?php $this->load->view('./templates/header'); ?>
 
 
+	<div class="form_wrapper" data-role="content">
 
 <?php echo form_open($this->uri->uri_string()); ?>
 <div>
@@ -104,5 +105,6 @@ white-space: normal;
 
 <?php echo form_submit('submit', 'Let me in'); ?>
 <?php echo form_close(); ?>
+</div>
 </div><!-- end data role page -->
 </body>

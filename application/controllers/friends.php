@@ -51,16 +51,7 @@ class Friends extends CI_Controller {
 		if (!$this->tank_auth->is_logged_in()) {
 			redirect('/home');
 		}
-	/*
-		$loggedIn = $this->session->userdata('loggedIn');
-		$userId = $this->session->userdata('id');
-		
-		if(!$loggedIn || $userId == ''){
-			$session_items = array('loggedIn' => '', 'id' => '', 'username' => '');
-			$this->session->unset_userdata($session_items);
-			redirect('/home');
-		}
-		*/
+
 	}
 	
 }

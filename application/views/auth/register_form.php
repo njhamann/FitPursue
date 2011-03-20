@@ -56,6 +56,7 @@ white-space: normal;
 <div data-role="page" data-theme="b" id="jqm-home">
 <?php $this->load->view('./templates/header'); ?>
 
+	<div class="form_wrapper" data-role="content">
 
 <?php echo form_open($this->uri->uri_string()); ?>
 
@@ -115,5 +116,6 @@ white-space: normal;
 
 <?php echo form_submit('register', 'Register'); ?>
 <?php echo form_close(); ?>
+</div>
 </div><!-- end data role page -->
 </body>
