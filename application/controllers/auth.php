@@ -151,7 +151,33 @@ class Auth extends CI_Controller
 						$use_username ? $this->form_validation->set_value('username') : '',
 						$this->form_validation->set_value('email'),
 						$this->form_validation->set_value('password'),
-						$email_activation))) {									// success
+						$this->input->post('first_name'),
+						$this->input->post('last_name'),
+						$email_activation))) 
+						{									// success
+
+
+
+/*
+	function create_user($data, $activated = TRUE)
+	{
+		$data['created'] = date('Y-m-d H:i:s');
+		$data['activated'] = $activated ? 1 : 0;
+
+		if ($this->db->insert($this->table_name, $data)) {
+			$user_id = $this->db->insert_id();
+			if ($activated)	$this->create_profile($user_id);
+			return array('user_id' => $user_id);
+		}
+		return NULL;
+	}
+*/
+
+
+
+
+
+
 
 					$data['site_name'] = $this->config->item('website_name', 'tank_auth');
 

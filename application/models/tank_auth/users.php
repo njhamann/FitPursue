@@ -125,15 +125,17 @@ class Users extends CI_Model
 	 * @param	bool
 	 * @return	array
 	 */
-	function create_user($data, $activated = TRUE)
+	function create_user($data, $activated = TRUE, $profile)
 	{
 		$data['created'] = date('Y-m-d H:i:s');
 		$data['activated'] = $activated ? 1 : 0;
 
 		if ($this->db->insert($this->table_name, $data)) {
-			$user_id = $this->db->insert_id();
-			if ($activated)	$this->create_profile($user_id);
-			return array('user_id' => $user_id);
+			$user->id = $this->db->insert_id();
+			$user->first_name = $profile['first_name'];
+			$user->last_name = $profile['last_name'];
+			if ($activated)	$this->create_profile($user);
+			return array('user_id' => $user->id);
 		}
 		return NULL;
 	}
@@ -375,9 +377,12 @@ class Users extends CI_Model
 	 * @param	int
 	 * @return	bool
 	 */
-	private function create_profile($user_id)
+	private function create_profile($user)
 	{
-		$this->db->set('user_id', $user_id);
+		$this->db->set('user_id', $user->id);
+		$this->db->set('first_name', $user->first_name);
+		$this->db->set('last_name', $user->last_name);
+
 		return $this->db->insert($this->profile_table_name);
 	}
 

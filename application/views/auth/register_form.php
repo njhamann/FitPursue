@@ -8,6 +8,21 @@ if ($use_username) {
 		'size'	=> 30,
 	);
 }
+$first_name = array(
+	'name'	=> 'first_name',
+	'id'	=> 'first_name',
+	'value'	=> set_value('first_name'),
+	'maxlength'	=> 80,
+	'size'	=> 30,
+);
+$last_name = array(
+	'name'	=> 'last_name',
+	'id'	=> 'last_name',
+	'value'	=> set_value('last_name'),
+	'maxlength'	=> 80,
+	'size'	=> 30,
+);
+
 $email = array(
 	'name'	=> 'email',
 	'id'	=> 'email',
@@ -44,11 +59,9 @@ $captcha = array(
 	<meta charset="utf-8" />
 	<title>jQuery Mobile: Demos and Documentation</title>
 	<?php $this->load->view('./templates/head'); ?>
-<style type="text/css">
-.ui-li-desc {
-white-space: normal;
-}
-</style>
+	<style type="text/css">
+		.ui-li-desc {white-space: normal;}
+	</style>
 </head> 
 <body> 
 
@@ -59,6 +72,20 @@ white-space: normal;
 	<div class="form_wrapper" data-role="content">
 
 <?php echo form_open($this->uri->uri_string()); ?>
+
+<div>
+<?php echo form_label('First Name', $first_name['id']); ?>
+</div>
+<?php echo form_input($first_name); ?>
+<?php echo form_error($first_name['name']); ?>
+<?php echo isset($errors[$first_name['name']])?$errors[$first_name['name']]:''; ?>
+
+<div>
+<?php echo form_label('Last Name', $last_name['id']); ?>
+</div>
+<?php echo form_input($last_name); ?>
+<?php echo form_error($last_name['name']); ?>
+<?php echo isset($errors[$last_name['name']])?$errors[$last_name['name']]:''; ?>
 
 	<?php if ($use_username) { ?>
 <div>
@@ -73,7 +100,8 @@ white-space: normal;
 <?php echo form_label('Email Address', $email['id']); ?>
 </div>
 <?php echo form_input($email); ?>
-<?php echo form_error($email['name']); ?><?php echo isset($errors[$email['name']])?$errors[$email['name']]:''; ?>
+<?php echo form_error($email['name']); ?>
+<?php echo isset($errors[$email['name']])?$errors[$email['name']]:''; ?>
 <div>
 <?php echo form_label('Password', $password['id']); ?>
 </div>
