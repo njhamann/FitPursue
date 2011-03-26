@@ -13,6 +13,24 @@ class Profile extends CI_Controller {
 
 	function user()
 	{
+	
+	
+		$result = null;
+		
+		$userData = $this->getUserData();
+		
+		if(count($userData) == 1)
+		{
+			$result = $this->getWorkoutData($userData[0]->id);
+			$this->load->view('workouts', $result);
+		}
+		else
+		{
+			$this->load->view('home');
+		}
+	
+	
+	/*
 		$result = null;
 		if($this->session->userdata('loggedIn') && $this->uri->segment(1, 0) == $this->session->userdata('username'))
 		{
@@ -36,6 +54,7 @@ class Profile extends CI_Controller {
 				$this->load->view('home');
 			}
 		}
+		*/
 	}
 	
 	function createUserSession($results)
@@ -55,10 +74,32 @@ class Profile extends CI_Controller {
 		$workout_result = $this->user->get_user_by_username($user);
 		return $workout_result;
 	}
-	function getWorkoutData()
+	function getWorkoutData($id)
 	{
 		$this->load->model('Workout', 'workout');
-		$user->id = $this->session->userdata('id');
+		$this->load->model('User', 'user');
+		$this->load->model('Friend', 'friend');
+
+		
+
+		$user->id = $id;
+		
+		
+		$connection->user_id = $this->tank_auth->get_user_id();
+		$connection->friend_id = $id;
+		$connections = $this->friend->get_connection($connection);
+
+		
+		if($this->tank_auth->is_logged_in() && count($connections))
+		{
+			$result['hasConnection'] = true;
+		}
+		else
+		{
+			$result['hasConnection'] = false;
+		}
+		
+		$result['user'] = $this->user->get_user($user);
 		$result['workouts'] = $this->workout->get_user_workouts($user);
 
 		for($i=0; $i<count($result['workouts']); $i++)
@@ -87,6 +128,43 @@ class Profile extends CI_Controller {
 			$result['workouts'][$i]->workout_date = $post_date;
 		}
 		return $result;
+	}
+	
+	function add_connection()
+	{
+
+		
+		if($this->tank_auth->is_logged_in() && $this->uri->segment(3, 0))
+		{
+			$this->load->model('User', 'user');
+			$user->username = $this->uri->segment(3, 0);
+			$user_result = $this->user->get_user_by_username($user);		
+
+			$this->load->model('Friend', 'friend');
+			$connection->user_id = $this->tank_auth->get_user_id();
+			$connection->friend_id = $user_result[0]->id;
+			$user_result = $this->friend->insert_connection($connection);
+		}
+		redirect('/'.$this->uri->segment(3, 0));
+
+	}
+	function remove_connection()
+	{
+		if($this->tank_auth->is_logged_in() && $this->uri->segment(3, 0))
+		{
+			$this->load->model('User', 'user');
+			$user->username = $this->uri->segment(3, 0);
+			$user_result = $this->user->get_user_by_username($user);
+			
+			$this->load->model('Friend', 'friend');
+			$connection->user_id = $this->tank_auth->get_user_id();
+			$connection->friend_id = $user_result[0]->id;
+			$user_result = $this->friend->delete_connection($connection);
+
+		}
+
+			redirect('/'.$this->uri->segment(3, 0));
+		
 	}
 }
 

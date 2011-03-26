@@ -15,9 +15,25 @@ class Users extends CI_Controller {
 	function user()
 	{
 		$result = null;
-		if($this->session->userdata('loggedIn') && $this->uri->segment(1, 0) == $this->session->userdata('username'))
+		
+		$userData = $this->getUserData();
+		
+		if(count($userData) == 1)
 		{
-			$result = $this->getWorkoutData();
+			$result = $this->getWorkoutData($userData[0]->id);
+			$this->load->view('workouts', $result);
+		}
+		else
+		{
+			$this->load->view('home');
+		}
+		
+		
+		
+		/*
+		if($this->tank_auth->is_logged_in() && $this->uri->segment(1, 0) == $this->tank_auth->get_username())
+		{
+			$result = $this->getWorkoutData($userData[0]->id);
 			$this->load->view('workouts', $result);
 
 		}
@@ -27,7 +43,7 @@ class Users extends CI_Controller {
 			
 			if(count($userData) == 1)
 			{
-				$this->createUserSession($userData[0]);
+				//$this->createUserSession($userData[0]);
 				$result = $this->getWorkoutData();
 				$this->load->view('workouts', $result);
 
@@ -37,6 +53,7 @@ class Users extends CI_Controller {
 				$this->load->view('home');
 			}
 		}
+		*/
 
 	}
 	
@@ -54,11 +71,23 @@ class Users extends CI_Controller {
 	{
 		$this->load->model('User', 'user');
 		$user->username = $this->uri->segment(1, 0);
-		$workout_result = $this->user->get_user_by_username($user);
-		return $workout_result;
+		$user_result = $this->user->get_user_by_username($user);
+		return $user_result;
 	}
 	function getWorkoutData()
 	{
+	
+	
+			$this->load->model('Workout', 'workout');
+		$this->load->model('User', 'user');
+
+		
+		$user->id = $this->session->userdata('id');
+
+		$result['user'] = $this->user->get_user($user);
+		//print_r($result['user']);
+	
+	
 		$this->load->model('Workout', 'workout');
 		$user->id = $this->session->userdata('id');
 		$result['workouts'] = $this->workout->get_user_workouts($user);

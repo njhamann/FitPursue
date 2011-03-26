@@ -59,6 +59,7 @@ code {
 
 
 <p><br />Page rendered in {elapsed_time} seconds</p>
+	<?php $this->load->view('templates/footer'); ?>
 
 </body>
 </html>

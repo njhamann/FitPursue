@@ -52,6 +52,7 @@ white-space: normal;
 	
 
 	
+	<?php $this->load->view('templates/footer'); ?>
 
 </div>
 </body>

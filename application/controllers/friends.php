@@ -39,10 +39,11 @@ class Friends extends CI_Controller {
 			    	$post_date = strtolower($post_time_array[2])." ago";
 			        break;
 			    default:
-					$post_date = date("j \of M y", $post_time);
+					$post_date = date("j \of M y", strtotime($post_time));
 			}
 			$result['workouts'][$i]->workout_date = $post_date;
 		}
+
 		$this->load->view('friends', $result);
 	}
 	function check_session()

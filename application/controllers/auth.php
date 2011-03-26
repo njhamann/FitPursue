@@ -67,7 +67,10 @@ class Auth extends CI_Controller
 						$this->form_validation->set_value('password'),
 						$this->form_validation->set_value('remember'),
 						$data['login_by_username'],
-						$data['login_by_email'])) {								// success
+						$data['login_by_email'])) {		
+						
+						
+												// success
 					redirect('');
 
 				} else {

@@ -22,10 +22,10 @@ white-space: normal;
 		<?php foreach($workouts as $row): ?>
 			<li role="option" tabindex="-1" class="ui-li ui-li-static ui-btn-up-d">
 				<h3 style="">
-				<?php echo $row->first_name; ?> <?php echo ($row->type=="running" ? "ran": ""); ?> <?php echo $row->amount; ?> <?php echo $row->amount_unit; ?> in <?php echo $row->amount_2; ?> <?php echo $row->amount_2_unit; ?>
+				<a href="/<?php echo $row->username; ?>"><?php echo $row->first_name; ?></a> <?php echo ($row->type=="running" ? "ran": ""); ?> <?php echo $row->amount; ?> <?php echo $row->amount_unit; ?> in <?php echo $row->amount_2; ?> <?php echo $row->amount_2_unit; ?>
 				</h3>
 				<p><?php echo $row->notes; ?></p>
-				<p><strong><?php echo $row->first_name; ?> <?php echo $row->last_name; ?></strong> posted <?php echo $row->workout_date; ?></p>
+				<p><strong><a href="/<?php echo $row->username; ?>"><?php echo $row->first_name; ?> <?php echo $row->last_name; ?></a></strong> posted <?php echo $row->workout_date; ?></p>
 
 			</li>
 		<?php endforeach; ?>
@@ -34,6 +34,7 @@ white-space: normal;
 	
 	
 	
+	<?php $this->load->view('templates/footer'); ?>
 
 </div>
 </body>

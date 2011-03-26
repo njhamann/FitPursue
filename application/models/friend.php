@@ -1,10 +1,10 @@
 <?php
 
-class Friend extends Model {
+class Friend extends CI_Model {
 
-    function Friend()
+    function __construct()
     {
-        parent::Model();
+        parent::__construct();
     }
     function insert_account($account)
     {
@@ -20,6 +20,50 @@ class Friend extends Model {
 
 
     }
+    
+    function get_connection($connection)
+    {
+
+   		$sql = "SELECT *
+ 				FROM friend
+ 				WHERE user_id='$connection->user_id'
+ 				AND friend_id='$connection->friend_id'";
+ 				
+		$res = $this->db->query($sql);  
+		$items = $res->result();
+	    return $items; 
+
+
+    }
+    
+    function insert_connection($connection)
+    {
+
+    	$sql = "INSERT INTO friend
+ 				(user_id
+ 				,friend_id)
+ 				VALUES 
+ 				('$connection->user_id'
+ 				,'$connection->friend_id')";
+ 				
+		$res = $this->db->query($sql);  
+
+
+    }
+    
+    function delete_connection($connection)
+    {
+
+    	$sql = "DELETE FROM friend 
+    			WHERE user_id='$connection->user_id'
+ 				AND friend_id='$connection->friend_id'";
+ 				
+		$res = $this->db->query($sql);  
+
+
+    }
+    
+    
 }
 
 ?>
