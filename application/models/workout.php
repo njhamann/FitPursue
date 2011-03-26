@@ -17,15 +17,15 @@ class Workout extends CI_Model {
 		$items = $res->result();
 	    return $items;
 	}
-	function get_friend_workouts($user)
+	function get_connection_workouts($user)
 	{
 		$sql = "SELECT *
-				FROM friend
+				FROM connection
 				LEFT JOIN workout
-				ON friend.friend_id = workout.user_id
+				ON connection.connection_id = workout.user_id
 				LEFT JOIN user
-				ON friend.friend_id = user.id
-				WHERE friend.user_id = '$user->id'
+				ON connection.connection_id = user.id
+				WHERE connection.user_id = '$user->id'
 				ORDER BY workout.id DESC";
  				
 		$res = $this->db->query($sql);

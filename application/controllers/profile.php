@@ -14,7 +14,7 @@ class Profile extends CI_Controller {
 	function user()
 	{
 	
-	
+	echo "hello";
 		$result = null;
 		
 		$userData = $this->getUserData();
@@ -78,7 +78,7 @@ class Profile extends CI_Controller {
 	{
 		$this->load->model('Workout', 'workout');
 		$this->load->model('User', 'user');
-		$this->load->model('Friend', 'friend');
+		$this->load->model('Connection', 'connection');
 
 		
 
@@ -86,8 +86,8 @@ class Profile extends CI_Controller {
 		
 		
 		$connection->user_id = $this->tank_auth->get_user_id();
-		$connection->friend_id = $id;
-		$connections = $this->friend->get_connection($connection);
+		$connection->connection_id = $id;
+		$connections = $this->connection->get_connection($connection);
 
 		
 		if($this->tank_auth->is_logged_in() && count($connections))
@@ -140,10 +140,10 @@ class Profile extends CI_Controller {
 			$user->username = $this->uri->segment(3, 0);
 			$user_result = $this->user->get_user_by_username($user);		
 
-			$this->load->model('Friend', 'friend');
+			$this->load->model('Connection', 'connection');
 			$connection->user_id = $this->tank_auth->get_user_id();
-			$connection->friend_id = $user_result[0]->id;
-			$user_result = $this->friend->insert_connection($connection);
+			$connection->connection_id = $user_result[0]->id;
+			$user_result = $this->connection->insert_connection($connection);
 		}
 		redirect('/'.$this->uri->segment(3, 0));
 
@@ -156,10 +156,10 @@ class Profile extends CI_Controller {
 			$user->username = $this->uri->segment(3, 0);
 			$user_result = $this->user->get_user_by_username($user);
 			
-			$this->load->model('Friend', 'friend');
+			$this->load->model('Connection', 'connection');
 			$connection->user_id = $this->tank_auth->get_user_id();
-			$connection->friend_id = $user_result[0]->id;
-			$user_result = $this->friend->delete_connection($connection);
+			$connection->connection_id = $user_result[0]->id;
+			$user_result = $this->connection->delete_connection($connection);
 
 		}
 

@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Friends extends CI_Controller {
+class Connections extends CI_Controller {
 
 	function __construct()
 	{
@@ -13,7 +13,7 @@ class Friends extends CI_Controller {
 		$this->check_session();
 		$this->load->model('Workout', 'workout');
 		$user->id = $this->tank_auth->get_user_id();
-		$result['workouts'] = $this->workout->get_friend_workouts($user);
+		$result['workouts'] = $this->workout->get_connection_workouts($user);
 
 
 		for($i=0; $i<count($result['workouts']); $i++)
@@ -44,7 +44,7 @@ class Friends extends CI_Controller {
 			$result['workouts'][$i]->workout_date = $post_date;
 		}
 
-		$this->load->view('friends', $result);
+		$this->load->view('connections', $result);
 	}
 	function check_session()
 	{

@@ -38,7 +38,7 @@
 |
 */
 
-$route['default_controller'] = "friends";
+$route['default_controller'] = "connections";
 $route['404_override'] = "";
 
 $route['settings'] = "settings";
@@ -55,11 +55,11 @@ $route['profile'] = "profile";
 $route['profile/(:any)'] = "profile/$1";
 $route['workouts'] = "workouts";
 $route['workouts/(:any)'] = "workouts/$1";
-$route['friends'] = "friends";
-$route['friends/(:any)'] = "friends/$1";
+$route['connections'] = "connections";
+$route['connections/(:any)'] = "connections/$1";
 
 
-$route['(:any)/(:any)'] = "friends/index";
+$route['(:any)/(:any)'] = "connections/index";
 
 $route['(:any)'] = "profile/user/$1";
 

@@ -1,6 +1,6 @@
 <?php
 
-class Friend extends CI_Model {
+class Connection extends CI_Model {
 
     function __construct()
     {
@@ -25,9 +25,9 @@ class Friend extends CI_Model {
     {
 
    		$sql = "SELECT *
- 				FROM friend
+ 				FROM connection
  				WHERE user_id='$connection->user_id'
- 				AND friend_id='$connection->friend_id'";
+ 				AND connection_id='$connection->connection_id'";
  				
 		$res = $this->db->query($sql);  
 		$items = $res->result();
@@ -39,12 +39,12 @@ class Friend extends CI_Model {
     function insert_connection($connection)
     {
 
-    	$sql = "INSERT INTO friend
+    	$sql = "INSERT INTO connection
  				(user_id
- 				,friend_id)
+ 				,connection_id)
  				VALUES 
  				('$connection->user_id'
- 				,'$connection->friend_id')";
+ 				,'$connection->connection_id')";
  				
 		$res = $this->db->query($sql);  
 
@@ -54,9 +54,9 @@ class Friend extends CI_Model {
     function delete_connection($connection)
     {
 
-    	$sql = "DELETE FROM friend 
+    	$sql = "DELETE FROM connection 
     			WHERE user_id='$connection->user_id'
- 				AND friend_id='$connection->friend_id'";
+ 				AND connection_id='$connection->connection_id'";
  				
 		$res = $this->db->query($sql);  
 
