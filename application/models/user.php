@@ -10,8 +10,8 @@ class User extends CI_Model {
 	function get_user($user)
     {
    		$sql = "SELECT *
- 				FROM user
- 				WHERE id='$user->id'";
+ 				FROM user_profiles
+ 				WHERE user_id='$user->id'";
  				
 		$res = $this->db->query($sql);  
 		$items = $res->result();
@@ -20,7 +20,7 @@ class User extends CI_Model {
     function get_user_by_username($user)
     {
    		$sql = "SELECT *
- 				FROM user
+ 				FROM users
  				WHERE username='$user->username'";
  				
 		$res = $this->db->query($sql);  

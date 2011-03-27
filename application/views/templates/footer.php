@@ -1,5 +1,5 @@
 <?php if ($this->tank_auth->is_logged_in()) { ?>
-	<a href="/auth/logout">Logout</a>
+	<p style="text-align:center;"><a href="/auth/logout">Logout</a></p>
 <?php } ?>				
 
 

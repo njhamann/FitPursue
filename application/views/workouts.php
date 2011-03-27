@@ -58,7 +58,7 @@ white-space: normal;
 				<p><?php echo $row->notes; ?></p>
 				<p>Posted <?php echo $row->workout_date; ?></p>
 
-				<span class="ui-li-count ui-btn-up-c ui-btn-corner-all"><a href="/workouts/details/<?php echo $row->id; ?>"><?php echo $row->comment_count; ?> Comments</a></span>
+				<span class="ui-li-count ui-btn-up-c ui-btn-corner-all"><a href="/workouts/details/<?php echo $row->workout_id; ?>"><?php echo $row->comment_count; ?> Comments</a></span>
 			</li>
 		<?php endforeach; ?>
 		</ul>

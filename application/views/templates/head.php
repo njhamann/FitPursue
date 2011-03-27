@@ -43,4 +43,3 @@ $(document).ready(function()
 </script>
 <link rel="stylesheet"  href="http://code.jquery.com/mobile/1.0a3/jquery.mobile-1.0a3.min.css" />
 <link rel="stylesheet" href="/css/style.css" type="text/css" media="screen, projection" />
-

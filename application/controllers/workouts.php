@@ -22,8 +22,8 @@ class Workouts extends CI_Controller {
 	{
 		$this->load->model('User', 'user');
 		$user->id = $this->tank_auth->get_user_id();
-		$workout_result = $this->user->get_user($user);
-		$result['user'] = $workout_result[0]; 
+		$user_result = $this->user->get_user($user);
+		$result['user'] = $user_result[0]; 
 		$this->load->view('add_workout', $result);
 
 	}

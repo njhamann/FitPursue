@@ -8,7 +8,7 @@ class Workout extends CI_Model {
     }
 	function get_user_workouts($user)
 	{
-   		$sql = "SELECT *, COUNT(comment.workout_id) AS comment_count
+   		$sql = "SELECT *, workout.id AS workout_id, COUNT(comment.workout_id) AS comment_count
 				FROM workout
 				LEFT JOIN comment
 				ON workout.id = comment.workout_id
