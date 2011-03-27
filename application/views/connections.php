@@ -20,16 +20,27 @@ white-space: normal;
 		<p>This is your friend's workout feed.</p>
 		<ul data-role="listview" data-inset="true" data-theme="c" data-dividertheme="b">
 		<?php foreach($workouts as $row): ?>
+		<?php print_r($row); ?>
+
 			<li role="option" tabindex="-1" class="ui-li ui-li-static ui-btn-up-d">
 				<h3 style="">
-				<a href="/<?php echo $row->username; ?>"><?php echo $row->first_name; ?></a> <?php echo ($row->type=="running" ? "ran": ""); ?> <?php echo $row->amount; ?> <?php echo $row->amount_unit; ?> in <?php echo $row->amount_2; ?> <?php echo $row->amount_2_unit; ?>
+				<?php echo $row->first_name; ?> <?php echo ($row->type=="running" ? "ran": ""); ?> <?php echo $row->amount; ?> <?php echo $row->amount_unit; ?> in <?php echo $row->amount_2; ?> <?php echo $row->amount_2_unit; ?>
 				</h3>
 				<p><?php echo $row->notes; ?></p>
-				<p><strong><a href="/<?php echo $row->username; ?>"><?php echo $row->first_name; ?> <?php echo $row->last_name; ?></a></strong> posted <?php echo $row->workout_date; ?></p>
+				<p><strong><?php echo $row->first_name; ?> <?php echo $row->last_name; ?></strong> posted <?php echo $row->workout_date; ?></p>
+				<span class="ui-li-count ui-btn-up-c ui-btn-corner-all"><a href="/workouts/details/<?php echo $row->workout_id; ?>"><?php echo $row->comment_count; ?> Comments</a></span>
 
 			</li>
 		<?php endforeach; ?>
 		</ul>
+		
+		
+		
+
+		
+		
+		
+		
 	</div>
 	
 	

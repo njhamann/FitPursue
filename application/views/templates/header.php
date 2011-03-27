@@ -18,13 +18,13 @@
 	<?php } else { ?>
 <div data-role="header" class="ui-bar-a ui-header" data-theme="a"  data-position="inline">
 		<h1 class="ui-title" tabindex="0" role="heading" aria-level="1">FitPursue</h1>
-			<a href="/workouts" data-icon="add" class="ui-btn-right">Add</a>
+			<a href="/workouts/add_workout" data-icon="add" class="ui-btn-right">Add</a>
 
 	<div data-role="navbar">
 		<ul>
 			<li><a href="/">Home</a></li>
 			<li><a href="/<?php echo $this->tank_auth->get_username(); ?>">Profile</a></li>
-			<li><a href="/workouts">Progress</a></li>
+			<li><a href="/workouts/add_workout">Progress</a></li>
 			<li><a href="/settings">Settings</a></li>
 
 		</ul>
