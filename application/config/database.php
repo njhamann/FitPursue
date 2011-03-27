@@ -41,19 +41,19 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-/*
+
 $db['default']['hostname'] = "internal-db.s8206.gridserver.com";
 $db['default']['username'] = "hamanndesign";
 $db['default']['password'] = "janisjoplin";
 $db['default']['database'] = "db8206_workout_site";
-*/
 
 
+/*
 $db['default']['hostname'] = 'localhost';
 $db['default']['username'] = 'root';
 $db['default']['password'] = 'root';
 $db['default']['database'] = 'workout_site';
-
+*/
 
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';

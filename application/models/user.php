@@ -10,8 +10,10 @@ class User extends CI_Model {
 	function get_user($user)
     {
    		$sql = "SELECT *
- 				FROM user_profiles
- 				WHERE user_id='$user->id'";
+ 				FROM users
+ 				LEFT JOIN user_profiles
+				ON users.id = user_profiles.user_id
+ 				WHERE users.id='$user->id'";
  				
 		$res = $this->db->query($sql);  
 		$items = $res->result();

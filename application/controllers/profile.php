@@ -14,7 +14,6 @@ class Profile extends CI_Controller {
 	function user()
 	{
 	
-	echo "hello";
 		$result = null;
 		
 		$userData = $this->getUserData();

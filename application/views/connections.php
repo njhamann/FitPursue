@@ -20,7 +20,6 @@ white-space: normal;
 		<p>This is your friend's workout feed.</p>
 		<ul data-role="listview" data-inset="true" data-theme="c" data-dividertheme="b">
 		<?php foreach($workouts as $row): ?>
-		<?php print_r($row); ?>
 
 			<li role="option" tabindex="-1" class="ui-li ui-li-static ui-btn-up-d">
 				<h3 style="">

@@ -41,12 +41,12 @@ class Workout extends CI_Model {
 	
 	function get_connection_workouts($user)
 	{
-		$sql = "SELECT *, COUNT(comment.workout_id) AS comment_count
+		$sql = "SELECT *, workout.id AS workout_id, COUNT(comment.workout_id) AS comment_count
 				FROM connection
 				LEFT JOIN workout
 				ON connection.connection_id = workout.user_id
-				LEFT JOIN user
-				ON connection.connection_id = user.id
+				LEFT JOIN user_profiles
+				ON connection.connection_id = user_profiles.user_id
 				LEFT JOIN comment
 				ON workout.id = comment.workout_id
 				WHERE connection.user_id = '$user->id'
