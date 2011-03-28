@@ -24,7 +24,7 @@
 		<ul>
 			<li><a href="/">Home</a></li>
 			<li><a href="/<?php echo $this->tank_auth->get_username(); ?>">Profile</a></li>
-			<li><a href="/workouts/add_workout">Progress</a></li>
+			<li><a href="/progress">Progress</a></li>
 			<li><a href="/settings">Settings</a></li>
 
 		</ul>

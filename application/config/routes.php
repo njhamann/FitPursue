@@ -57,7 +57,8 @@ $route['workouts'] = "workouts";
 $route['workouts/(:any)'] = "workouts/$1";
 $route['connections'] = "connections";
 $route['connections/(:any)'] = "connections/$1";
-
+$route['progress'] = "progress";
+$route['progress/(:any)'] = "progress/$1";
 
 $route['(:any)/(:any)'] = "connections/index";
 
